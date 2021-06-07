@@ -36,6 +36,7 @@ final class PointTests: XCTestCase {
 
         XCTAssertEqual(point.forecast.absoluteString, "https://api.weather.gov/gridpoints/SEW/128,67/forecast")
         XCTAssertEqual(point.forecastHourly.absoluteString, "https://api.weather.gov/gridpoints/SEW/128,67/forecast/hourly")
+        XCTAssertEqual(point.forecastGridData.absoluteString, "https://api.weather.gov/gridpoints/SEW/128,67")
 
         XCTAssertEqual(point.timeZone, "America/Los_Angeles")
         XCTAssertEqual(point.radarStation, "KATX")

@@ -9,7 +9,7 @@ import Foundation
 
 public struct Point: Decodable {
     public enum CodingKeys: String, CodingKey {
-        case cwa, gridX, gridY, forecast, forecastHourly, relativeLocation, timeZone, radarStation
+        case cwa, gridX, gridY, forecast, forecastHourly, forecastGridData, relativeLocation, timeZone, radarStation
     }
     public let cwa: String
     public let gridX: Int
@@ -17,6 +17,7 @@ public struct Point: Decodable {
 
     public let forecast: URL
     public let forecastHourly: URL
+    public let forecastGridData: URL
 
 //    public let relativeLocation: MKGeoJSONFeature
     
@@ -32,6 +33,7 @@ public struct Point: Decodable {
 
         self.forecast = try container.decode(URL.self, forKey: .forecast)
         self.forecastHourly = try container.decode(URL.self, forKey: .forecastHourly)
+        self.forecastGridData = try container.decode(URL.self, forKey: .forecastGridData)
 
 //        let timeZoneName = try container.decode(String.self, forKey: .timeZone)
 //        guard let timeZone = TimeZone(identifier: timeZoneName) else {
