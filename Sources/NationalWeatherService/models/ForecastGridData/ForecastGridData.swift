@@ -19,6 +19,8 @@ public struct ForecastGridData: Decodable {
         case windChill
         case probabilityOfPrecipitation
         case pressure
+        case relativeHumidity
+        case skyCover
     }
 
     public let validTimes: DateInterval
@@ -33,6 +35,8 @@ public struct ForecastGridData: Decodable {
     public let windChill: ForecastGridDataTemperature
 
     public let probabilityOfPrecipitation: ForecastGridDataPercentage
+    public let relativeHumidity: ForecastGridDataPercentage
+    public let skyCover: ForecastGridDataPercentage
 
     public let pressure: ForecastGridDataPercentage
 
@@ -58,6 +62,8 @@ public struct ForecastGridData: Decodable {
         self.windChill = try container.decode(ForecastGridDataTemperature.self, forKey: .windChill)
 
         self.probabilityOfPrecipitation = try container.decode(ForecastGridDataPercentage.self, forKey: .probabilityOfPrecipitation)
+        self.relativeHumidity = try container.decode(ForecastGridDataPercentage.self, forKey: .relativeHumidity)
+        self.skyCover = try container.decode(ForecastGridDataPercentage.self, forKey: .skyCover)
 
         self.pressure = try container.decode(ForecastGridDataPercentage.self, forKey: .pressure)
     }
