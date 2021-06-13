@@ -29,8 +29,25 @@ final class GetForecastIntegrationTests: XCTestCase {
         wait(for: [hourlyForecastExpectation], timeout: 10)
     }
 
+    func testGetForecastGridData() throws {
+        let forecastGridDataExpectation = self.expectation(description: "get forecast grid data expectation")
+        nws.forecastGridData(latitude: 47.6174, longitude: -122.2017) { result in
+            XCTAssertSuccess(result)
+
+            let forecast = try! result.get()
+            XCTAssertFalse(forecast.apparentTemperature.values.isEmpty)
+            XCTAssertFalse(forecast.temperature.values.isEmpty)
+            XCTAssertFalse(forecast.dewPoint.values.isEmpty)
+            XCTAssertFalse(forecast.probabilityOfPrecipitation.values.isEmpty)
+
+            forecastGridDataExpectation.fulfill()
+        }
+        wait(for: [forecastGridDataExpectation], timeout: 10)
+    }
+
     static var allTests = [
         ("testGetForecastForLocation", testGetForecastForLocation),
-        ("testGetHourlyForecast", testGetHourlyForecast)
+        ("testGetHourlyForecast", testGetHourlyForecast),
+        ("testGetForecastGridData", testGetForecastGridData)
     ]
 }

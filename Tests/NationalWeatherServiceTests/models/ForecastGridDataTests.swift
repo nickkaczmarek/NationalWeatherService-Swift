@@ -18,7 +18,11 @@ final class ForecastGridDataTests: XCTestCase {
         let forecastData = Fixtures.ForecastGridData_Only_Fixture_STL
         let forecast = try decoder.decode(ForecastGridData.self, from: forecastData)
 
-        XCTAssertEqual(forecast.elevation.description, "156.0576 m")
+        XCTAssertNotNil(forecast.elevation)
+
+        XCTAssertNotNil(forecast.apparentTemperature)
+
+        XCTAssertNotNil(forecast.pressure)
     }
 
     static var allTests = [
