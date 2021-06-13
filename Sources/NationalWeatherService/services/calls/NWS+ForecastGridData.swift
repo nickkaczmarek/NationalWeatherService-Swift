@@ -34,5 +34,9 @@ extension NationalWeatherService {
     public func forecastGridData(for coordinates: CLLocationCoordinate2D, then handler: @escaping ForecastGridDataHandler) {
         self.forecastGridData(latitude: coordinates.latitude, longitude: coordinates.longitude, then: handler)
     }
+
+    public func forecastGridData(for location: CLLocation, then handler: @escaping ForecastGridDataHandler) {
+        self.forecastGridData(for: location.coordinate, then: handler)
+    }
 }
 #endif
