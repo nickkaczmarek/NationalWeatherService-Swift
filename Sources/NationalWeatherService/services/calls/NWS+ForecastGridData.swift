@@ -26,3 +26,13 @@ extension NationalWeatherService {
         }
     }
 }
+
+#if canImport(CoreLocation)
+import CoreLocation
+
+extension NationalWeatherService {
+    public func forecastGridData(for coordinates: CLLocationCoordinate2D, then handler: @escaping ForecastGridDataHandler) {
+        self.forecastGridData(latitude: coordinates.latitude, longitude: coordinates.longitude, then: handler)
+    }
+}
+#endif
